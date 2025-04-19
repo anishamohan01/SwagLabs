@@ -16,12 +16,14 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pages.Cart;
+import pages.Checkout;
 import pages.LoginPage;
 import pages.Products;
 
 public class Shopping {
 	
 	WebDriver driver;
+	Cart cart;
 	
 	@BeforeClass
 	public void beforeClass() {
@@ -45,7 +47,7 @@ public class Shopping {
 	
 	
 	@Test
-	public void testLogin() throws InterruptedException {
+	public void tc1_testLogin() throws InterruptedException {
 		System.out.println("testLogin");
 		LoginPage lp = new LoginPage(driver);
 		lp.enterUserName("standard_user");
@@ -56,8 +58,8 @@ public class Shopping {
 		Assert.assertTrue(url.contains("/inventory.html"), "Did not navigate to Inventory page");
 	}
 	
-	@Test(priority=1)
-	public void addToCart() {
+	@Test()
+	public void tc2_addToCart() {
 		System.out.println("addToCart");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		Products p = new Products(driver);
@@ -69,9 +71,18 @@ public class Shopping {
 		String url = driver.getCurrentUrl();
 		System.out.println(url);
 		Assert.assertTrue(url.contains("/cart.html"), "Not Applicable");
-		Cart c = new Cart(driver);
-		Assert.assertEquals(c.getItemsLength(), 1);
+		cart = new Cart(driver);
+		Assert.assertEquals(cart.getItemsLength(), 1);
 	}
 	
+	@Test()
+	public void tc3_checkOut() {
+		cart.clickCheckOutBtn();
+		Checkout checkout = new Checkout(driver);
+		checkout.enterFirstName();
+		checkout.enterLastName();
+		checkout.enterPostalCode();
+		checkout.clickContinueBtn();
+	}
 
 }

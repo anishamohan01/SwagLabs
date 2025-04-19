@@ -19,8 +19,18 @@ public class Cart {
 	@FindBy(className="cart_item")
 	private List<WebElement> items;
 	
+	@FindBy(xpath = "//button[@name = \"checkout\"]")
+	private WebElement checkOutBtn;
+	
 	public int getItemsLength() {
 		return items.size();
+	}
+	
+	
+// Page Action
+	
+	public void clickCheckOutBtn() {
+		checkOutBtn.click();
 	}
 
 }
