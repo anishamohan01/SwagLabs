@@ -30,16 +30,16 @@ public class Checkout {
 	
 	// Page Actions
 	
-	public void enterFirstName() {
-		firstName.sendKeys("Anisha");	
+	public void enterFirstName(String fname) {
+		firstName.sendKeys(fname);	
 	}
 	
-	public void enterLastName() {
-		lastName.sendKeys("Verkot Mohan");
+	public void enterLastName(String lname) {
+		lastName.sendKeys(lname);
 	}
 	
-	public void enterPostalCode() {
-		postalCode.sendKeys("N3T3R6");
+	public void enterPostalCode(String pcode) {
+		postalCode.sendKeys(pcode);
 	}
 	
 	public void clickContinueBtn() {

@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 
 import pages.Cart;
 import pages.Checkout;
+import pages.CheckoutOverview;
 import pages.LoginPage;
 import pages.Products;
 
@@ -42,7 +43,7 @@ public class Shopping {
 	@AfterTest()
 	public void afterTest() {
 		System.out.println("afterTest");
-//		driver.quit();
+		driver.quit();
 	}
 	
 	
@@ -79,10 +80,14 @@ public class Shopping {
 	public void tc3_checkOut() {
 		cart.clickCheckOutBtn();
 		Checkout checkout = new Checkout(driver);
-		checkout.enterFirstName();
-		checkout.enterLastName();
-		checkout.enterPostalCode();
+		checkout.enterFirstName("Anisha");
+		checkout.enterLastName("Verkot Mohan");
+		checkout.enterPostalCode("k3y2r6");
 		checkout.clickContinueBtn();
+		CheckoutOverview overview = new CheckoutOverview(driver);
+		String title = overview.checkTitle();
+		System.out.println(title);
+		Assert.assertEquals(title, "Checkout: Overview");
 	}
 
 }

@@ -5,10 +5,10 @@
     <classes>
       <class name="testcases.Shopping">
         <methods>
+          <include name="tc3_checkOut"/>
           <include name="beforeClass"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
-          <include name="addToCart"/>
         </methods>
       </class> <!-- testcases.Shopping -->
     </classes>
