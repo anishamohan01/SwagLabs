@@ -12,7 +12,6 @@ public class Cart {
 	public Cart(WebDriver dr){
 		PageFactory.initElements(dr, this);
 		this.driver = dr;
-		
 	}
 	
 	//Page Elements
@@ -27,8 +26,7 @@ public class Cart {
 	}
 	
 	
-// Page Action
-	
+	// Page Actions
 	public void clickCheckOutBtn() {
 		checkOutBtn.click();
 	}

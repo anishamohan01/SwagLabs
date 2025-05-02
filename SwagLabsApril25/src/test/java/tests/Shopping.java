@@ -1,18 +1,8 @@
-package testcases;
+package tests;
 
-import static org.testng.Assert.assertEquals;
-
-import java.sql.Driver;
 import java.time.Duration;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import pages.Cart;
@@ -21,25 +11,10 @@ import pages.CheckoutOverview;
 import pages.LoginPage;
 import pages.Products;
 
-public class Shopping {
+public class Shopping extends BaseTest {
 	
-	WebDriver driver;
-	Cart cart;
-	
-	@BeforeClass
-	public void beforeClass() {
-		driver = new EdgeDriver();
-		driver.get("https://www.saucedemo.com");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));	
-	}
-	
-	
-	@AfterTest()
-	public void afterTest() {
-		driver.quit();
-	}
-	
+//	WebDriver driver;
+	Cart cart;	
 	
 	@Test
 	public void tc1_testLogin() throws InterruptedException {
@@ -55,8 +30,11 @@ public class Shopping {
 	public void tc2_addToCart() {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		Products p = new Products(driver);
+//		System.out.println("p: " + p);
+//		System.out.println("p btn1"+ p.getButtonText());
 		Assert.assertEquals(p.getButtonText(), "Add to cart");
 		p.clickAddToCartBtn();
+//		System.out.println("p btn2"+ p.getButtonText());
 		Assert.assertEquals(p.getButtonText(), "Remove");
 		p.clickCartLink();
 		String url = driver.getCurrentUrl();

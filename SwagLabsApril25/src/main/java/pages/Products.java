@@ -6,51 +6,42 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Products {
-	
+
 	WebDriver driver;
-	
+
 	public Products(WebDriver dr) {
-		PageFactory.initElements(dr, this );
+		PageFactory.initElements(dr, this);
 		driver = dr;
 	}
-	
-	
-	
-// Page elements
-	
-	@FindBy(id="item_4_title_link")
+
+	// Page elements
+
+	@FindBy(id = "item_4_title_link")
 	private WebElement product1;
-	
-	@FindBy(xpath="//*[text()='Sauce Labs Backpack']/ancestor::div[@class='inventory_item_description']//button")
+
+	@FindBy(xpath = "//*[text()='Sauce Labs Backpack']/ancestor::div[@class='inventory_item_description']//button")
 	private WebElement addToCartbtn;
-	
-	@FindBy(id="item_4_title_link")
+
+	@FindBy(id = "item_4_title_link")
 	private WebElement backPack;
-	
-	@FindBy(xpath="//a[@data-test='shopping-cart-link']")
+
+	@FindBy(xpath = "//a[@data-test='shopping-cart-link']")
 	private WebElement cart;
-	
-	
-	// 2. Page Actions
-	
+
+	// Page Actions
+
 	public void clickBackpack() {
 		backPack.click();
 	}
-	
-// Page Actions
-	
-	public void selectProduct1() {
-		
-	}
-	
+
 	public void clickAddToCartBtn() {
 		addToCartbtn.click();
 	}
-	
+
 	public String getButtonText() {
 		return addToCartbtn.getText();
 	}
-	
+
 	public void clickCartLink() {
 		cart.click();
 	}

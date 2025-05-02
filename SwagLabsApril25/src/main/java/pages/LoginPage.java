@@ -27,8 +27,6 @@ public class LoginPage {
 	private WebElement loginBtn;
 	
 	
-	
-	
 	//Page Actions
 	
 	public void enterUserName(String name) {
